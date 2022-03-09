@@ -1,20 +1,39 @@
 
-import '../css/componentes.css'
-// import webpacklogo from '../assets/img/webpack-logo.png';
+import {Todo, TodoList } from  '../classes'
+
+const divTodoList = document.querySelector('.todo-list')
+const txtInput    = document.querySelector('.new-todo')
 
 
-export const saludar = (nombre) => {
+export const crearTodoHtml = ( todo ) => {
 
-    console.log('Creado Etiqueta h1');
-    
-    const h1= document.createElement('h1');
-    h1.innerText = `Hola, ${nombre} !!!`;
+    const htmlTodo = `
+    <li class="${ (todo.completado) ? 'completed' : '' }" data-id="${todo.id}">
+    <div class="view">
+        <input class="toggle" type="checkbox" ${ (todo.completado) ? 'checked' : '' }>
+        <label>${todo.tarea}</label>
+        <button class="destroy"></button>
+    </div>
+    <input class="edit" value="Create a TodoMVC template">
+</li>`;
 
-    document.body.append(h1);
+const div = document.createElement('div');
+div.innerHTML = htmlTodo;
 
-    // //
-    // const img = document.createElement('img');
-    // img.src= webpacklogo;
-    // document.body.append(img);
+divTodoList.append(div.firstElementChild);  // lo agregar al html y extrae el primer valor del div sin mostrarlo
+
+return div.firstElementChild;
 
 }
+
+
+// Eventos
+
+txtInput.addEventListener('keyup', (event ) => {
+
+
+    if( event.keyCode === 13  && txtInput.value.length > 0) {
+        console.log(txtInput.value);
+        const nuevoTodo = new Todo( txtInput.value) 
+    }
+});
