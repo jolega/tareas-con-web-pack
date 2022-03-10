@@ -1,5 +1,6 @@
 
-import {Todo, TodoList } from  '../classes'
+import {Todo} from  '../classes'
+import { todoList } from '../index'
 
 const divTodoList = document.querySelector('.todo-list')
 const txtInput    = document.querySelector('.new-todo')
@@ -33,7 +34,30 @@ txtInput.addEventListener('keyup', (event ) => {
 
 
     if( event.keyCode === 13  && txtInput.value.length > 0) {
-        console.log(txtInput.value);
         const nuevoTodo = new Todo( txtInput.value) 
+        todoList.nuevoTodo (nuevoTodo);
+        crearTodoHtml(nuevoTodo);
+        txtInput.value = '';
+        
     }
 });
+
+divTodoList.addEventListener('click', (event) => {
+
+    const nombreElemento = event.target.localName;
+    const todoElemento   = event.target.parentElement.parentElement;
+    const todoId         = todoElemento.getAttribute('data-id')
+
+    if( nombreElemento.includes('input')) {         // valida si dio clic 
+        todoList.marcaCompletado(todoId);           // marca completado el elemento
+        todoElemento.classList.toggle('completed'); // tacha el elemento
+    }
+    else if (nombreElemento.includes('button')){    // valida si dio clic
+
+        todoList.eliminarTodo(todoId);              // elimina elemento del array
+        divTodoList.removeChild(todoElemento)       // elimina el elemento del from
+
+    }
+
+    
+})

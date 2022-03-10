@@ -3,7 +3,7 @@ import './styles.css';
 import {Todo, TodoList, crearTodoHtml} from './classes';
 
 
-const todoList= new TodoList();
+export const todoList= new TodoList();
 
 const tarea = new Todo('aprender JavaScript');
 
