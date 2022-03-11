@@ -31,7 +31,7 @@ export class TodoList{
     }
 
     eliminartCompletados(){
-        
+        this.todos=    this.todos.filter (todo => ! todo.completado ) // regresa um arreglo sin el todo
     }
 
 }
