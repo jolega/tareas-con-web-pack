@@ -12,6 +12,11 @@ const tarea = new Todo('aprender JavaScript');
 todoList.nuevoTodo( tarea);
 
 crearTodoHtml( tarea );
-console.log(todoList);
+
+localStorage.setItem('mi-key','abc123');
+
+// setTimeout(()=> {
+//     localStorage.removeItem('mi-key')
+// },1500)
 
 
