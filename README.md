@@ -18,7 +18,13 @@ Webpack - copy webpack	https://webpack.js.org/plugins/copy-webpack-plugin/
 
 # ejecucion 
 ```
-    "build": "webpack --config webpack.prod.js",
-    "build:dev": "webpack --config webpack.config.js",
-    "start": "webpack serve --config webpack.config.js --open --port=8080"
+    "build": "webpack --config webpack.prod.js",    ----- npm run-script build
+    "build:dev": "webpack --config webpack.config.js", --- npm  run-script build:dev
+    "start": "webpack serve --config webpack.config.js --open --port=8080" ---npm  start 
 ```
+
+# publicar en git   
+https://github.com/jolega/webpack-inicial/settings/pages
+en las pages del proyecto es necesario renombrar la carpeta dist por docs 
+
+en el source enlazarla 
